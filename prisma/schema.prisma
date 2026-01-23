@@ -85,6 +85,24 @@ model Verification {
   @@map("verification")
 }
 
+model Habits {
+  id       String   @id @default(cuid())
+  name     String
+  when     String
+  identity String
+  days     Days[]
+  quantity String
+  time     String[]
+}
+
+enum Days {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+}
+
 model Book {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
