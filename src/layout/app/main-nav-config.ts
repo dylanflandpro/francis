@@ -1,4 +1,5 @@
 import { ValidateLinkOptions } from '@tanstack/react-router';
+import { Calendar1Icon, CalendarFoldIcon } from 'lucide-react';
 import { FC } from 'react';
 
 import {
@@ -17,6 +18,15 @@ export const MAIN_NAV_LINKS = [
     iconActive: IconHouseFill,
     linkOptions: {
       to: '/app',
+    },
+    exact: true,
+  } as const,
+  {
+    labelTranslationKey: 'layout:nav.habits',
+    icon: Calendar1Icon,
+    iconActive: CalendarFoldIcon,
+    linkOptions: {
+      to: '/app/habits',
     },
     exact: true,
   } as const,

@@ -4,6 +4,7 @@ import accountRouter from './routers/account';
 import bookRouter from './routers/book';
 import configRouter from './routers/config';
 import genreRouter from './routers/genre';
+import habitRouter from './routers/habits';
 import userRouter from './routers/user';
 
 export type Router = typeof router;
@@ -12,6 +13,7 @@ export type Outputs = InferRouterOutputs<typeof router>;
 export const router = {
   account: accountRouter,
   book: bookRouter,
+  habit: habitRouter,
   genre: genreRouter,
   user: userRouter,
   config: configRouter,

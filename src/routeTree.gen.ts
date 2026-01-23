@@ -24,6 +24,7 @@ import { Route as ManagerBooksIndexRouteImport } from './routes/manager/books/in
 import { Route as ManagerAccountIndexRouteImport } from './routes/manager/account.index'
 import { Route as LoginVerifyIndexRouteImport } from './routes/login/verify.index'
 import { Route as LoginErrorIndexRouteImport } from './routes/login/error.index'
+import { Route as AppHabitsIndexRouteImport } from './routes/app/habits/index'
 import { Route as AppBooksIndexRouteImport } from './routes/app/books/index'
 import { Route as AppAccountIndexRouteImport } from './routes/app/account.index'
 import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc.$'
@@ -116,6 +117,11 @@ const LoginErrorIndexRoute = LoginErrorIndexRouteImport.update({
   id: '/error/',
   path: '/error/',
   getParentRoute: () => LoginRouteRoute,
+} as any)
+const AppHabitsIndexRoute = AppHabitsIndexRouteImport.update({
+  id: '/habits/',
+  path: '/habits/',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 const AppBooksIndexRoute = AppBooksIndexRouteImport.update({
   id: '/books/',
@@ -222,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app/account': typeof AppAccountIndexRoute
   '/app/books': typeof AppBooksIndexRoute
+  '/app/habits': typeof AppHabitsIndexRoute
   '/login/error': typeof LoginErrorIndexRoute
   '/login/verify': typeof LoginVerifyIndexRoute
   '/manager/account': typeof ManagerAccountIndexRoute
@@ -253,6 +260,7 @@ export interface FileRoutesByTo {
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app/account': typeof AppAccountIndexRoute
   '/app/books': typeof AppBooksIndexRoute
+  '/app/habits': typeof AppHabitsIndexRoute
   '/login/error': typeof LoginErrorIndexRoute
   '/login/verify': typeof LoginVerifyIndexRoute
   '/manager/account': typeof ManagerAccountIndexRoute
@@ -288,6 +296,7 @@ export interface FileRoutesById {
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app/account/': typeof AppAccountIndexRoute
   '/app/books/': typeof AppBooksIndexRoute
+  '/app/habits/': typeof AppHabitsIndexRoute
   '/login/error/': typeof LoginErrorIndexRoute
   '/login/verify/': typeof LoginVerifyIndexRoute
   '/manager/account/': typeof ManagerAccountIndexRoute
@@ -324,6 +333,7 @@ export interface FileRouteTypes {
     | '/api/rpc/$'
     | '/app/account'
     | '/app/books'
+    | '/app/habits'
     | '/login/error'
     | '/login/verify'
     | '/manager/account'
@@ -355,6 +365,7 @@ export interface FileRouteTypes {
     | '/api/rpc/$'
     | '/app/account'
     | '/app/books'
+    | '/app/habits'
     | '/login/error'
     | '/login/verify'
     | '/manager/account'
@@ -389,6 +400,7 @@ export interface FileRouteTypes {
     | '/api/rpc/$'
     | '/app/account/'
     | '/app/books/'
+    | '/app/habits/'
     | '/login/error/'
     | '/login/verify/'
     | '/manager/account/'
@@ -529,6 +541,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginErrorIndexRouteImport
       parentRoute: typeof LoginRouteRoute
     }
+    '/app/habits/': {
+      id: '/app/habits/'
+      path: '/habits'
+      fullPath: '/app/habits'
+      preLoaderRoute: typeof AppHabitsIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/books/': {
       id: '/app/books/'
       path: '/books'
@@ -655,6 +674,7 @@ interface AppRouteRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
   AppAccountIndexRoute: typeof AppAccountIndexRoute
   AppBooksIndexRoute: typeof AppBooksIndexRoute
+  AppHabitsIndexRoute: typeof AppHabitsIndexRoute
   AppBooksIdIndexRoute: typeof AppBooksIdIndexRoute
 }
 
@@ -662,6 +682,7 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppIndexRoute: AppIndexRoute,
   AppAccountIndexRoute: AppAccountIndexRoute,
   AppBooksIndexRoute: AppBooksIndexRoute,
+  AppHabitsIndexRoute: AppHabitsIndexRoute,
   AppBooksIdIndexRoute: AppBooksIdIndexRoute,
 }
 

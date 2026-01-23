@@ -33,6 +33,7 @@ model User {
   banReason   String?
   banExpires  DateTime?
   onboardedAt DateTime?
+  Habits      Habits[]
 
   @@unique([email])
   @@map("user")
@@ -93,6 +94,8 @@ model Habits {
   days     Days[]
   quantity String
   time     String[]
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
 }
 
 enum Days {
@@ -101,6 +104,8 @@ enum Days {
   WEDNESDAY
   THURSDAY
   FRIDAY
+  SATURDAY
+  SUNDAY
 }
 
 model Book {
