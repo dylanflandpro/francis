@@ -1,7 +1,12 @@
-<h1 align="center"><img src=".github/assets/thumbnail.png" alt="Start UI Web" /></h1>
+<h1 align="center"><img src=".github/assets/thumbnail.png" alt="Francis Habits" /></h1>
 
-🚀 Start UI <small>[web]</small> is an opinionated frontend starter repository created & maintained by the [BearStudio Team](https://www.bearstudio.fr/team) and other contributors.
-It represents our team's up-to-date stack that we use when creating web apps for our clients.
+🧠 **Francis Habits** - Système de Coaching IA basé sur les principes d'Atomic Habits
+
+Une application web moderne pour créer, tracker et améliorer vos habitudes avec un coaching IA intelligent.
+
+🧠 **Francis Habits** is an AI-powered habit coaching system based on the principles of Atomic Habits.
+
+A modern web application to create, track, and improve your habits with intelligent AI coaching.
 
 
 ## Technologies
@@ -10,9 +15,63 @@ It represents our team's up-to-date stack that we use when creating web apps for
 
 [⚙️ Node.js](https://nodejs.org), [🟦 TypeScript](https://www.typescriptlang.org/), [⚛️ React](https://react.dev/), [📦 TanStack Start](https://tanstack.com/start), [💨 Tailwind CSS](https://tailwindcss.com/), [🧩 shadcn/ui](https://ui.shadcn.com/), [📋 React Hook Form](https://react-hook-form.com/), [🔌 oRPC](https://orpc.unnoq.com/), [🛠 Prisma](https://www.prisma.io/), [🔐 Better Auth](https://www.better-auth.com/), [📚 Storybook](https://storybook.js.org/), [🧪 Vitest](https://vitest.dev/), [🎭 Playwright](https://playwright.dev/)
 
+## 🎯 Key Features
+
+### Based on Atomic Habits Principles
+
+- **Identity-Based Habits**: Define who you want to become, not just what you want to achieve
+- **Habit Stacking**: Link new habits to existing ones for easier adoption
+- **Environment Design**: Optimize your surroundings to make good habits obvious
+- **The 4 Laws of Behavior Change**:
+  - Make it obvious
+  - Make it attractive
+  - Make it easy
+  - Make it satisfying
+- **Habit Tracking**: Daily tracking with streaks and completion rates
+- **Never Miss Twice**: Smart notifications to prevent habit decline
+
+### AI-Powered Coaching
+
+- **Pattern Recognition**: Analyze your habits to find optimal days and times
+- **Personalized Recommendations**: Actionable suggestions based on your data
+- **Atomic Habits Compliance Score**: See how well your habits align with principles
+- **Smart Insights**: Get context-aware notifications and tips
+- **Predictive Analysis**: Identify potential habit failures before they happen
+
+### Core Functionality
+
+- 📝 **Create & Manage Habits**: Full CRUD with Atomic Habits fields
+- 📅 **Daily Tracking**: Toggle completion with visual feedback
+- 📊 **Statistics**: Detailed charts showing progress and trends
+- 🗓️ **Calendar View**: Monthly heatmap of habit completions
+- 🧠 **AI Coaching**: Personalized insights and recommendations
+- 🔔 **Smart Reminders**: Customizable push/email reminders
+- 📤 **Data Export**: Export your data in JSON or CSV format
+- 🌍 **Multi-language**: English, Arabic, French, Swahili
+- 🌓 **Dark Mode**: Full dark mode support
+
+### What's NOT in MVP
+
+❌ No heavy gamification (badges, levels, points)
+❌ No social network features
+❌ No inspirational-only features (everything is measurable)
+
 ## Documentation
 
-For detailed information on how to use this project, please refer to the [documentation](https://docs.web.start-ui.com). The documentation contains all the necessary information on installation, usage, and some guides.
+### Francis Habits Project Documentation
+
+This project includes comprehensive documentation for the AI-powered habit coaching system:
+
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture and technical design
+- **[DATA_MODEL.md](./DATA_MODEL.md)** - Complete database schema and data models
+- **[API_ENDPOINTS.md](./API_ENDPOINTS.md)** - All API endpoints with TypeScript types
+- **[DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)** - Development phases and milestones (MVP → v2 → v3)
+- **[PROJECT_SKELETON.md](./PROJECT_SKELETON.md)** - Complete file structure and implementation guide
+- **[AGENTS.md](./AGENTS.md)** - Development guidelines and coding standards
+
+### General Start UI Documentation
+
+For detailed information on the base project stack, please refer to the [documentation](https://docs.web.start-ui.com). The documentation contains all the necessary information on installation, usage, and some guides.
 
 ## Requirements
 
