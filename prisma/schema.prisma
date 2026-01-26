@@ -17,6 +17,61 @@ enum UserRole {
   admin
 }
 
+// ==================== HABIT ENUMS ====================
+
+enum Frequency {
+  DAILY
+  WEEKLY
+  CUSTOM
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum HabitStatus {
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+enum TriggerType {
+  AFTER_HABIT
+  BEFORE_HABIT
+  TIME_BASED
+  LOCATION_BASED
+  EVENT_BASED
+}
+
+enum Environment {
+  HOME
+  WORK
+  GYM
+  OUTDOOR
+  MOBILE
+  CUSTOM
+}
+
+enum Mood {
+  GREAT
+  GOOD
+  NEUTRAL
+  BAD
+  TERRIBLE
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -33,6 +88,10 @@ model User {
   banReason   String?
   banExpires  DateTime?
   onboardedAt DateTime?
+
+  // Habit relations
+  habits      Habit[]
+  habitEntries HabitEntry[]
 
   @@unique([email])
   @@map("user")
@@ -85,46 +144,103 @@ model Verification {
   @@map("verification")
 }
 
-model Book {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  author    String
-  genre     Genre?   @relation(fields: [genreId], references: [id])
-  genreId   String
-  publisher String?
-  coverId   String?
+// ==================== HABIT MODELS ====================
 
-  @@unique([title, author])
-  @@map("book")
+model Habit {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+
+  // === ATOMIC HABITS PRINCIPLES ===
+
+  // Identity-Based Habits
+  identity       String
+  identityReason String?
+
+  // Habit Stacking
+  triggerType   TriggerType?
+  triggerHabitId String?
+  triggerHabit  Habit?     @relation("HabitStacking", fields: [triggerHabitId], references: [id])
+  stackedHabits Habit[]     @relation("HabitStacking")
+
+  // Environment Design
+  environment Environment?
+  location    String?
+  cue         String?
+
+  // The 4 Laws of Behavior Change
+  makeObvious    String?
+  makeAttractive String?
+  makeEasy       String?
+  makeSatisfying String?
+
+  // === CONFIGURATION ===
+
+  // Frequency
+  frequency      Frequency  @default(DAILY)
+  days           DayOfWeek[]
+  scheduledTime  String?
+
+  // Difficulty
+  difficulty     Difficulty @default(BEGINNER)
+  minimumMinutes Int?
+  targetMinutes  Int?
+
+  // Quantity
+  quantity String?
+  unit     String?
+
+  // === STATUS & METADATA ===
+
+  status     HabitStatus @default(ACTIVE)
+  archivedAt DateTime?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  // Relations
+  userId     String
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entries    HabitEntry[]
+
+  // Indexes
+  @@index([userId, status])
+  @@index([triggerHabitId])
+  @@map("habit")
 }
 
-model Author {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String   @unique
+model HabitEntry {
+  id          String   @id @default(cuid())
+  habitId     String
+  habit       Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
 
-  @@map("author")
-}
+  // Completion
+  completed   Boolean  @default(false)
+  completedAt DateTime?
 
-model Genre {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String   @unique
-  color     String
-  Book      Book[]
+  // Actual quantity (if applicable)
+  actualQuantity Float?
+  actualUnit     String?
 
-  @@map("genre")
-}
+  // Notes
+  notes       String?
+  mood        Mood?
 
-model Publisher {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String   @unique
+  // Context
+  skipped     Boolean  @default(false)
+  skipReason  String?
 
-  @@map("publisher")
+  // Metadata
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // User relation
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Indexes
+  @@index([habitId, date])
+  @@index([userId, date])
+  @@unique([habitId, date])
+  @@map("habit_entry")
 }
