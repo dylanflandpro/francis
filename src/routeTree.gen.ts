@@ -23,6 +23,7 @@ import { Route as ManagerAccountIndexRouteImport } from './routes/manager/accoun
 import { Route as LoginVerifyIndexRouteImport } from './routes/login/verify.index'
 import { Route as LoginErrorIndexRouteImport } from './routes/login/error.index'
 import { Route as AppAccountIndexRouteImport } from './routes/app/account.index'
+import { Route as ApiUploadSplatRouteImport } from './routes/api/upload.$'
 import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc.$'
 import { Route as ApiRestSplatRouteImport } from './routes/api/rest.$'
 import { Route as ApiOpenapiAuthRouteImport } from './routes/api/openapi/auth'
@@ -105,6 +106,11 @@ const AppAccountIndexRoute = AppAccountIndexRouteImport.update({
   path: '/account/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const ApiUploadSplatRoute = ApiUploadSplatRouteImport.update({
+  id: '/api/upload/$',
+  path: '/api/upload/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiRpcSplatRoute = ApiRpcSplatRouteImport.update({
   id: '/api/rpc/$',
   path: '/api/rpc/$',
@@ -176,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/api/openapi/auth': typeof ApiOpenapiAuthRouteWithChildren
   '/api/rest/$': typeof ApiRestSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
+  '/api/upload/$': typeof ApiUploadSplatRoute
   '/app/account': typeof AppAccountIndexRoute
   '/login/error': typeof LoginErrorIndexRoute
   '/login/verify': typeof LoginVerifyIndexRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/api/openapi/auth': typeof ApiOpenapiAuthRouteWithChildren
   '/api/rest/$': typeof ApiRestSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
+  '/api/upload/$': typeof ApiUploadSplatRoute
   '/app/account': typeof AppAccountIndexRoute
   '/login/error': typeof LoginErrorIndexRoute
   '/login/verify': typeof LoginVerifyIndexRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/api/openapi/auth': typeof ApiOpenapiAuthRouteWithChildren
   '/api/rest/$': typeof ApiRestSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
+  '/api/upload/$': typeof ApiUploadSplatRoute
   '/app/account/': typeof AppAccountIndexRoute
   '/login/error/': typeof LoginErrorIndexRoute
   '/login/verify/': typeof LoginVerifyIndexRoute
@@ -257,6 +266,7 @@ export interface FileRouteTypes {
     | '/api/openapi/auth'
     | '/api/rest/$'
     | '/api/rpc/$'
+    | '/api/upload/$'
     | '/app/account'
     | '/login/error'
     | '/login/verify'
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/api/openapi/auth'
     | '/api/rest/$'
     | '/api/rpc/$'
+    | '/api/upload/$'
     | '/app/account'
     | '/login/error'
     | '/login/verify'
@@ -308,6 +319,7 @@ export interface FileRouteTypes {
     | '/api/openapi/auth'
     | '/api/rest/$'
     | '/api/rpc/$'
+    | '/api/upload/$'
     | '/app/account/'
     | '/login/error/'
     | '/login/verify/'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   ApiOpenapiAuthRoute: typeof ApiOpenapiAuthRouteWithChildren
   ApiRestSplatRoute: typeof ApiRestSplatRoute
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute
+  ApiUploadSplatRoute: typeof ApiUploadSplatRoute
   ApiDevEmailTemplateRoute: typeof ApiDevEmailTemplateRoute
 }
 
@@ -435,6 +448,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/account'
       preLoaderRoute: typeof AppAccountIndexRouteImport
       parentRoute: typeof AppRouteRoute
+    }
+    '/api/upload/$': {
+      id: '/api/upload/$'
+      path: '/api/upload/$'
+      fullPath: '/api/upload/$'
+      preLoaderRoute: typeof ApiUploadSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/rpc/$': {
       id: '/api/rpc/$'
@@ -605,6 +625,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiOpenapiAuthRoute: ApiOpenapiAuthRouteWithChildren,
   ApiRestSplatRoute: ApiRestSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
+  ApiUploadSplatRoute: ApiUploadSplatRoute,
   ApiDevEmailTemplateRoute: ApiDevEmailTemplateRoute,
 }
 export const routeTree = rootRouteImport
