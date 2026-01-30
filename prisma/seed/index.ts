@@ -1,11 +1,23 @@
 import { db } from '@/server/db';
 
-import { createBooks } from './book';
+import { createHabits } from './habit';
 import { createUsers } from './user';
 
 async function main() {
-  await createBooks();
-  await createUsers();
+  console.log('🌱 Starting database seeding...\n');
+
+  try {
+    // Seed users first
+    await createUsers();
+
+    // Seed habits (requires users to exist)
+    await createHabits();
+
+    console.log('\n✅ Database seeding completed successfully!');
+  } catch (error) {
+    console.error('\n❌ Database seeding failed:', error);
+    throw error;
+  }
 }
 
 main()
@@ -13,6 +25,6 @@ main()
     console.error(e);
     process.exit(1);
   })
-  .finally(() => {
-    db.$disconnect();
+  .finally(async () => {
+    await db.$disconnect();
   });

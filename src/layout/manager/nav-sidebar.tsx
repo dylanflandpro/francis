@@ -9,7 +9,6 @@ import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Logo } from '@/components/brand/logo';
-import { IconBookOpen } from '@/components/icons/generated';
 import {
   Sidebar,
   SidebarContent,
@@ -70,18 +69,6 @@ export const NavSidebar = (props: { children?: ReactNode }) => {
                         <span>
                           <LayoutDashboardIcon />
                           <span>{t('layout:nav.dashboard')}</span>
-                        </span>
-                      </SidebarMenuButton>
-                    )}
-                  </Link>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <Link to="/manager/books">
-                    {({ isActive }) => (
-                      <SidebarMenuButton asChild isActive={isActive}>
-                        <span>
-                          <IconBookOpen />
-                          <span>{t('layout:nav.books')}</span>
                         </span>
                       </SidebarMenuButton>
                     )}

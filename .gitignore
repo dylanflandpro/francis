@@ -72,3 +72,11 @@ app.config.timestamp_*.js
 # zed
 /.zed/*
 !/.zed/settings.example.json
+
+# Review documents (temporary, not to be committed)
+REVIEW_REQUEST.md
+REVIEW_ASSESSMENT.md
+ORDRES_DU_REVIEWER.md
+INSTRUCTIONS_CORRIGEES.md
+VERIFICATION_REPORT.md
+FINAL_REVIEW_REPORT.md

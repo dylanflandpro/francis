@@ -10,7 +10,7 @@ export default {
 export const Default = () => {
   return (
     <UploadButton
-      uploadRoute="bookCover"
+      uploadRoute="/api/upload/$"
       inputProps={{
         accept: 'image/png,image/jpeg,image/gif',
       }}
@@ -23,24 +23,24 @@ export const WithChildren = () => {
   return (
     <div className="flex space-x-2">
       <UploadButton
-        uploadRoute="bookCover"
-        onSuccess={(file) => console.log('uploaded file', file)}
+        uploadRoute="/api/upload/$"
+        onSuccess={(_file) => console.log('uploaded file')}
       >
         <UploadIcon />
         Upload a new file
       </UploadButton>
 
       <UploadButton
-        uploadRoute="bookCover"
-        onSuccess={(file) => console.log('uploaded file', file)}
+        uploadRoute="/api/upload/$"
+        onSuccess={(_file) => console.log('uploaded file')}
       >
         Upload a new file
         <UploadIcon />
       </UploadButton>
 
       <UploadButton
-        uploadRoute="bookCover"
-        onSuccess={(file) => console.log('uploaded file', file)}
+        uploadRoute="/api/upload/$"
+        onSuccess={(_file) => console.log('uploaded file')}
       >
         Upload a new file
       </UploadButton>
@@ -53,8 +53,8 @@ export const Disabled = () => {
     <div className="flex space-x-2">
       <UploadButton
         disabled
-        uploadRoute="bookCover"
-        onSuccess={(file) => console.log('uploaded file', file)}
+        uploadRoute="/api/upload/$"
+        onSuccess={(_file) => console.log('uploaded file')}
       >
         <UploadIcon />
         Upload a new file
@@ -62,8 +62,8 @@ export const Disabled = () => {
 
       <UploadButton
         disabled
-        uploadRoute="bookCover"
-        onSuccess={(file) => console.log('uploaded file', file)}
+        uploadRoute="/api/upload/$"
+        onSuccess={(_file) => console.log('uploaded file')}
       >
         Upload a new file
         <UploadIcon />
