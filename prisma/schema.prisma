@@ -218,7 +218,7 @@ model HabitEntry {
   completedAt DateTime?
 
   // Actual quantity (if applicable)
-  actualQuantity Float?
+  actualQuantity Decimal?
   actualUnit     String?
 
   // Notes

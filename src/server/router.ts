@@ -2,6 +2,7 @@ import { InferRouterInputs, InferRouterOutputs } from '@orpc/server';
 
 import accountRouter from './routers/account';
 import configRouter from './routers/config';
+import habitRouter from './routers/habit';
 import userRouter from './routers/user';
 
 export type Router = typeof router;
@@ -11,4 +12,5 @@ export const router = {
   account: accountRouter,
   user: userRouter,
   config: configRouter,
+  habit: habitRouter,
 };
